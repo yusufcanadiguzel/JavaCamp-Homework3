@@ -3,29 +3,29 @@ package javaCampHomework3.business;
 import java.util.List;
 
 import javaCampHomework3.core.logging.ILogger;
+import javaCampHomework3.dataAccess.IEntityDao;
 //import javaCampHomework3.dataAccess.ICourseDao;
 import javaCampHomework3.dataAccess.JdbcEntityDao;
 import javaCampHomework3.entities.Course;
 
 public class CourseManager implements ICourseService{
-	//private ICourseDao _courseDao;
 	
-	public CourseManager(/*ICourseDao courseDao*/ ILogger logger) {
-		//_courseDao = courseDao;
+	public CourseManager(IEntityDao entityDao, ILogger logger) {
 		_logger = logger;
+		_entityDao = entityDao;
 	}
 	
-	private JdbcEntityDao<Course> _jdbcEntityDao = new JdbcEntityDao<>();
+	private IEntityDao<Course> _entityDao;
 	private ILogger _logger;
 
 	public Course getById(int id) {
-		_jdbcEntityDao.getById(id);
+		_entityDao.getById(id);
 		_logger.Log();
 		return null;
 	}
 
 	public List<Course> getAll() {
-		_jdbcEntityDao.getAll();
+		_entityDao.getAll();
 		_logger.Log();
 		return null;
 	}
@@ -39,20 +39,20 @@ public class CourseManager implements ICourseService{
 		}else if(course.getPrice() <= 0) {
 			System.out.println("Course price must be greater than 0.");
 		}else {
-			_jdbcEntityDao.add(course);
+			_entityDao.add(course);
 		}
 		
 		_logger.Log();
 	}
 
 	public void delete(int id) {
-		_jdbcEntityDao.delete(id);
+		_entityDao.delete(id);
 		
 		_logger.Log();
 	}
 
 	public void update(Course course) {
-		_jdbcEntityDao.update(course);
+		_entityDao.update(course);
 		
 		_logger.Log();
 	}
