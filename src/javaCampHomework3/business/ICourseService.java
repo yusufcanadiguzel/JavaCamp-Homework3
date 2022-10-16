@@ -7,6 +7,7 @@ import javaCampHomework3.entities.Course;
 public interface ICourseService {
 	
 	Course getById(int id);
+	List<Course> getByInstructorId(int instructorId);
 	List<Course> getAll();
 	void add(Course course);
 	void delete(int id);

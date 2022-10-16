@@ -57,6 +57,12 @@ public class CourseManager implements ICourseService{
 		
 		_logger.Log();
 	}
+
+	
+	public List<Course> getByInstructorId(int instructorId) {
+		_courseDao.getByInstructorId(instructorId);
+		return null;
+	}
 	
 	
 }

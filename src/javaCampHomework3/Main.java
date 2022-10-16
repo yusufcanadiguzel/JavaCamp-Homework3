@@ -41,6 +41,7 @@ public class Main {
 		courseManager.getAll();
 		courseManager.getById(1);
 		courseManager.update(course);
+		courseManager.getByInstructorId(1);
 
 		System.out.println("----------------------------------------");
 
