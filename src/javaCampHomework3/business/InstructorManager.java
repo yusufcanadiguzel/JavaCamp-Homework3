@@ -4,49 +4,50 @@ import java.util.List;
 
 import javaCampHomework3.core.logging.ILogger;
 import javaCampHomework3.dataAccess.IEntityDao;
+import javaCampHomework3.dataAccess.IInstructorDao;
 //import javaCampHomework3.dataAccess.IInstructorDao;
 import javaCampHomework3.dataAccess.JdbcEntityDao;
 import javaCampHomework3.entities.Instructor;
 
 public class InstructorManager implements IInstructorService{
 	
-	private IEntityDao<Instructor> _entityDao;
+	private IInstructorDao _instructorDao;
 	private ILogger _logger;
 	
-	public InstructorManager(IEntityDao entityDao, ILogger logger) {
+	public InstructorManager(IInstructorDao instructorDao, ILogger logger) {
 		_logger = logger;
-		_entityDao = entityDao;
+		_instructorDao = instructorDao;
 	}
 
 	@Override
 	public Instructor getById(int id) {
-		_entityDao.getById(id);
+		_instructorDao.getById(id);
 		_logger.Log();
 		return null;
 	}
 
 	@Override
 	public List<Instructor> getAll() {
-		_entityDao.getAll();
+		_instructorDao.getAll();
 		_logger.Log();
 		return null;
 	}
 
 	@Override
 	public void add(Instructor instructor) {
-		_entityDao.add(instructor);
+		_instructorDao.add(instructor);
 		_logger.Log();
 	}
 
 	@Override
 	public void update(Instructor instructor) {
-		_entityDao.update(instructor);
+		_instructorDao.update(instructor);
 		_logger.Log();
 	}
 
 	@Override
 	public void delete(int id) {
-		_entityDao.delete(id);
+		_instructorDao.delete(id);
 		_logger.Log();
 	}
 }

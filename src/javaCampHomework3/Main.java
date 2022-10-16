@@ -6,8 +6,14 @@ import javaCampHomework3.business.InstructorManager;
 import javaCampHomework3.core.logging.FileLogger;
 import javaCampHomework3.core.logging.MailLogger;
 import javaCampHomework3.core.logging.SmsLogger;
+import javaCampHomework3.dataAccess.JdbcCategoryDao;
+import javaCampHomework3.dataAccess.JdbcCourseDao;
 import javaCampHomework3.dataAccess.JdbcEntityDao;
+import javaCampHomework3.dataAccess.JdbcInstructorDao;
+import javaCampHomework3.dataAccess.NhCategoryDao;
+import javaCampHomework3.dataAccess.NhCourseDao;
 import javaCampHomework3.dataAccess.NhEntityDao;
+import javaCampHomework3.dataAccess.NhInstructorDao;
 //import javaCampHomework3.dataAccess.JdbcCategoryDao;
 //import javaCampHomework3.dataAccess.JdbcInstructorDao;
 //import javaCampHomework3.dataAccess.NhCourseDao;
@@ -20,7 +26,7 @@ public class Main {
 	public static void main(String[] args) {
 
 		// Course Tests
-		CourseManager courseManager = new CourseManager(new JdbcEntityDao(), new MailLogger());
+		CourseManager courseManager = new CourseManager(new NhCourseDao(), new MailLogger());
 
 		Course course = new Course();
 		course.setId(1);
@@ -39,7 +45,7 @@ public class Main {
 		System.out.println("----------------------------------------");
 
 		// Category Tests
-		CategoryManager categoryManager = new CategoryManager(new JdbcEntityDao(), new SmsLogger());
+		CategoryManager categoryManager = new CategoryManager(new JdbcCategoryDao(), new SmsLogger());
 
 		Category category = new Category();
 		category.setId(1);
@@ -54,7 +60,7 @@ public class Main {
 		System.out.println("----------------------------------------");
 
 		// Instructor Test
-		InstructorManager instructorManager = new InstructorManager(new NhEntityDao(), new FileLogger());
+		InstructorManager instructorManager = new InstructorManager(new NhInstructorDao(), new FileLogger());
 
 		Instructor instructor = new Instructor();
 		instructor.setId(1);
